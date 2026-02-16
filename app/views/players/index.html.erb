@@ -1,31 +1,26 @@
-<h1>Players</h1>
+<h1 class="mb-3">Players</h1>
 
-<% if current_user.admin? || current_user.coach? %>
-  <%= link_to "Add Player", new_player_path %>
-<% end %>
+<%= link_to "Add Player", new_player_path, class: "btn btn-primary mb-3" %>
 
-<table border="1">
-  <tr>
-    <th>Name</th>
-    <th>Created By</th>
-    <th>Action</th>
-  </tr>
-
-  <% @players.each do |player| %>
+<table class="table table-hover">
+  <thead class="table-light">
     <tr>
-      <td><%= player.name %></td>
-      <td><%= player.user.email %></td>
-      <td>
-        <% if current_user.admin? || current_user.coach? %>
-          <%= link_to "Delete", player, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
-        <% end %>
-      </td>
+      <th>Name</th>
+      <th>Actions</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @players.each do |player| %>
+      <tr>
+        <td><%= player.name %></td>
+        <td>
+          <%= link_to "Delete",
+                      player_path(player),
+                      data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                      class: "btn btn-danger btn-sm" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br>
-
-<% if current_user.admin? %>
-  <%= link_to "Manage Users", users_path %>
-<% end %>

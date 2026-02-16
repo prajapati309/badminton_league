@@ -1,20 +1,33 @@
-<h1>Users</h1>
+<h1 class="mb-4">Users</h1>
 
-<%= link_to "Create User", new_user_path %>
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <%= link_to "Back to Players", players_path, class: "btn btn-outline-secondary" %>
+  <%= link_to "Create User", new_user_path, class: "btn btn-primary" %>
+</div>
 
-<table border="1">
-  <tr>
-    <th>Email</th>
-    <th>Role</th>
-  </tr>
-
-  <% @users.each do |user| %>
+<table class="table table-bordered table-striped shadow-sm">
+  <thead class="table-dark">
     <tr>
-      <td><%= user.email %></td>
-      <td><%= user.role %></td>
+      <th>Email</th>
+      <th>Role</th>
     </tr>
-  <% end %>
-</table>
+  </thead>
 
-<br>
-<%= link_to "Back to Players", players_path %>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.email %></td>
+        <td>
+          <% case user.role %>
+          <% when "admin" %>
+            <span class="badge bg-danger">Admin</span>
+          <% when "coach" %>
+            <span class="badge bg-primary">Coach</span>
+          <% when "referee" %>
+            <span class="badge bg-success">Referee</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,4 +1,5 @@
 class MatchesController < ApplicationController
+  before_action :authenticate_user!
   before_action :authorize_match_recording!
 
   def index
@@ -17,7 +18,7 @@ class MatchesController < ApplicationController
       redirect_to matches_path, notice: "Match recorded successfully."
     else
       @players = Player.all
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

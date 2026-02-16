@@ -1,19 +1,23 @@
-<h1>Leaderboard</h1>
+<h1 class="mb-4">Leaderboard</h1>
 
-<table border="1">
-  <tr>
-    <th>Rank</th>
-    <th>Name</th>
-    <th>Wins</th>
-    <th>Losses</th>
-  </tr>
-
-  <% @players.each_with_index do |player, index| %>
+<table class="table table-striped table-bordered">
+  <thead class="table-dark">
     <tr>
-      <td><%= index + 1 %></td>
-      <td><%= player.name %></td>
-      <td><%= player.wins_count %></td>
-      <td><%= player.losses_count %></td>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Wins</th>
+      <th>Losses</th>
     </tr>
-  <% end %>
+  </thead>
+
+  <tbody>
+    <% @players.each_with_index do |player, index| %>
+      <tr>
+        <td><%= index + 1 %></td>
+        <td><%= player.name %></td>
+        <td><span class="badge bg-success"><%= player.wins_count %></span></td>
+        <td><span class="badge bg-danger"><%= player.lost_matches.count %></span></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
