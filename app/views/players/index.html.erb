@@ -17,7 +17,7 @@
       <td><%= player.user.email %></td>
       <td>
         <% if current_user.admin? || current_user.coach? %>
-          <%= link_to "Delete", player, method: :delete, data: { confirm: "Are you sure?" } %>
+          <%= link_to "Delete", player, method: :delete, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
         <% end %>
       </td>
     </tr>
