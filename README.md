@@ -5,20 +5,12 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version - ruby-3.2.0
 
-* System dependencies
-
-* Configuration
+* rails version - rails 7.1.6
 
 * Database creation
 
-* Database initialization
+* Run rails db:seed
 
-* How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
