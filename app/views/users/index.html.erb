@@ -1,0 +1,20 @@
+<h1>Users</h1>
+
+<%= link_to "Create User", new_user_path %>
+
+<table border="1">
+  <tr>
+    <th>Email</th>
+    <th>Role</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.email %></td>
+      <td><%= user.role %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+<%= link_to "Back to Players", players_path %>

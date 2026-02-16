@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :users, only: [:index, :new, :create]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -9,5 +8,8 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
+  root "players#index"
+  resources :players, only: [:index, :new, :create, :destroy]
   resources :users, only: [:index, :new, :create]
+
 end

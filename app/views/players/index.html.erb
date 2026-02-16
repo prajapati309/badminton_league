@@ -1,0 +1,31 @@
+<h1>Players</h1>
+
+<% if current_user.admin? || current_user.coach? %>
+  <%= link_to "Add Player", new_player_path %>
+<% end %>
+
+<table border="1">
+  <tr>
+    <th>Name</th>
+    <th>Created By</th>
+    <th>Action</th>
+  </tr>
+
+  <% @players.each do |player| %>
+    <tr>
+      <td><%= player.name %></td>
+      <td><%= player.user.email %></td>
+      <td>
+        <% if current_user.admin? || current_user.coach? %>
+          <%= link_to "Delete", player, method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<% if current_user.admin? %>
+  <%= link_to "Manage Users", users_path %>
+<% end %>
