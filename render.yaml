@@ -1,0 +1,25 @@
+services:
+  - type: web
+    name: badminton-league
+    env: ruby
+    plan: starter
+    region: oregon # choose the closest region to your users
+    buildCommand: bash ./build-render.sh
+    startCommand: bundle exec puma -C config/puma.rb
+    autoDeploy: true
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: badminton-league-db
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        generate: true
+      - key: RAILS_MASTER_KEY
+        fromFile: config/credentials/production.key
+
+databases:
+  - name: badminton-league-db
+    plan: starter
+    region: oregon
