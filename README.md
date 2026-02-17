@@ -14,6 +14,47 @@ Things you may want to cover:
 * Run rails db:seed
 
 
+This is a **Ruby on Rails** web application to manage a badminton league.  
+It allows users to manage players, record match results, and track player rankings.
+
+---
+
+## 🚀 Features
+
+### 1. Player Management
+- Add new players.
+- Delete existing players.
+- View a list of all players.
+
+### 2. Match Tracking
+- Record match results between players (winner and loser).
+- Validates that a player cannot play against themselves.
+- View all recorded matches in descending order of creation.
+
+### 3. Leaderboard / Stats
+- Displays wins and losses per player.
+- Shows player rankings based on the number of wins.
+
+### 4. User Management & Roles
+- Users can have different roles: **Admin**, **Coach**, or **Referee**.
+- **Admin** can:
+  - Create new users and assign roles.
+  - Manage all players.
+- **Coach / Referee** can:
+  - Record matches.
+  - Cannot create or manage users.
+- Role-based authorization ensures users only access allowed functionality.
+
+---
+
+## 🏗 Architecture & Stack
+
+- **Backend:** Ruby on Rails 7
+- **Authentication:** Devise
+- **Frontend:** Basic HTML/CSS with Bootstrap 5 (via CDN)
+- **Database:** PostgreSQL
+
+
 <img width="1474" height="662" alt="Screenshot from 2026-02-16 21-40-08" src="https://github.com/user-attachments/assets/3d47a189-74f4-4e5d-8b88-2d6538b07ab3" />
 <img width="1474" height="662" alt="Screenshot from 2026-02-16 21-40-16" src="https://github.com/user-attachments/assets/8e690143-68fa-42e9-a234-3a1d3e23f7fb" />
 <img width="1474" height="662" alt="Screenshot from 2026-02-16 21-40-37" src="https://github.com/user-attachments/assets/7db7361b-a478-44e9-8ece-2aebc72bc00d" />
