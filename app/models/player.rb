@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# handles players validation and associations
 class Player < ApplicationRecord
   belongs_to :user
 

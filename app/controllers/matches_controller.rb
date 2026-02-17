@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller to handle match display and creation.
 class MatchesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_match_recording!

@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+# Controller to handle users display and creation.
+# Shows users with their roles.
 class UsersController < ApplicationController
   before_action :authorize_admin!
 

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller to handle player display and creations.
 class PlayersController < ApplicationController
   before_action :authorize_player_management!, except: [:index]
 
