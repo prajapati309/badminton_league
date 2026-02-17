@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MatchesController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_match_recording!
@@ -15,7 +17,7 @@ class MatchesController < ApplicationController
     @match = Match.new(match_params)
 
     if @match.save
-      redirect_to matches_path, notice: "Match recorded successfully."
+      redirect_to matches_path, notice: 'Match recorded successfully.'
     else
       @players = Player.all
       render :new, status: :unprocessable_entity
@@ -29,8 +31,8 @@ class MatchesController < ApplicationController
   end
 
   def authorize_match_recording!
-    unless current_user.admin? || current_user.referee?
-      redirect_to root_path, alert: "Not authorized."
-    end
+    return if current_user.admin? || current_user.referee?
+
+    redirect_to root_path, alert: 'Not authorized.'
   end
 end

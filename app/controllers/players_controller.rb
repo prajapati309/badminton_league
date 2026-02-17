@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PlayersController < ApplicationController
   before_action :authorize_player_management!, except: [:index]
 
@@ -13,7 +15,7 @@ class PlayersController < ApplicationController
     @player = current_user.players.build(player_params)
 
     if @player.save
-      redirect_to players_path, notice: "Player created successfully."
+      redirect_to players_path, notice: 'Player created successfully.'
     else
       render :new
     end
@@ -22,7 +24,7 @@ class PlayersController < ApplicationController
   def destroy
     @player = Player.find(params[:id])
     @player.destroy
-    redirect_to players_path, notice: "Player deleted."
+    redirect_to players_path, notice: 'Player deleted.'
   end
 
   private
@@ -32,8 +34,8 @@ class PlayersController < ApplicationController
   end
 
   def authorize_player_management!
-    unless current_user.admin? || current_user.coach?
-      redirect_to root_path, alert: "Not authorized."
-    end
+    return if current_user.admin? || current_user.coach?
+
+    redirect_to root_path, alert: 'Not authorized.'
   end
 end

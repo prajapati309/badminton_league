@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 class Player < ApplicationRecord
   belongs_to :user
 
   validates :name, presence: true
 
   has_many :won_matches,
-         class_name: "Match",
-         foreign_key: :winner_id,
-         dependent: :destroy
+           class_name: 'Match',
+           foreign_key: :winner_id,
+           dependent: :destroy
 
   has_many :lost_matches,
-          class_name: "Match",
-          foreign_key: :loser_id,
-          dependent: :destroy
+           class_name: 'Match',
+           foreign_key: :loser_id,
+           dependent: :destroy
 
   def wins_count
     won_matches.count
@@ -20,5 +22,4 @@ class Player < ApplicationRecord
   def losses_count
     lost_matches.count
   end
-
 end

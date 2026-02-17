@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   before_action :authorize_admin!
 
@@ -13,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to users_path, notice: "User created successfully."
+      redirect_to users_path, notice: 'User created successfully.'
     else
       render :new
     end
@@ -22,7 +24,7 @@ class UsersController < ApplicationController
   private
 
   def authorize_admin!
-    redirect_to root_path, alert: "Access denied." unless current_user.admin?
+    redirect_to root_path, alert: 'Access denied.' unless current_user.admin?
   end
 
   def user_params
